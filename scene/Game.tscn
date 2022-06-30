@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scene/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Speedsound_Loops_-_Nava_Sounds_-_This_Is_Electro_House__WAV_Stems_.mp3" type="AudioStream" id=2]
+[ext_resource path="res://scripts/Game.gd" type="Script" id=3]
+[ext_resource path="res://scene/barreVie.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/barreVie.gd" type="Script" id=5]
+[ext_resource path="res://scene/background.tscn" type="PackedScene" id=6]
+
+[node name="Root" type="Node"]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Control" parent="CanvasLayer2" instance=ExtResource( 6 )]
+position = Vector2( 867.14, 687.368 )
+scale = Vector2( 2.00035, 2815.28 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="barreVie" parent="CanvasLayer" instance=ExtResource( 4 )]
+margin_left = 25.3026
+margin_top = 24.1257
+margin_right = 133.303
+margin_bottom = 84.1257
+script = ExtResource( 5 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 510, 300 )
+z_index = 4
+z_as_relative = false
+script = ExtResource( 3 )
+
+[node name="spawnEast" type="Position2D" parent="Node2D"]
+position = Vector2( 640, 0 )
+
+[node name="spawnNorth" type="Position2D" parent="Node2D"]
+position = Vector2( 0, -380 )
+
+[node name="spawnSouth" type="Position2D" parent="Node2D"]
+position = Vector2( 0, 380 )
+
+[node name="spawnWest" type="Position2D" parent="Node2D"]
+position = Vector2( -640.713, 0 )
+
+[node name="Timer" type="Timer" parent="Node2D"]
+wait_time = 2.0
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="Node2D"]
+stream = ExtResource( 2 )
+volume_db = -28.94
+autoplay = true
+
+[node name="Player" parent="Node2D" instance=ExtResource( 1 )]
+scale = Vector2( 0.100557, 0.101624 )
+
+[node name="Camera2D" type="Camera2D" parent="Node2D"]
+current = true
+
+[node name="SpawnUpgrade" type="Timer" parent="Node2D"]
+autostart = true
+
+[connection signal="timeout" from="Node2D/Timer" to="Node2D" method="_on_Timer_timeout"]
+[connection signal="health_change" from="Node2D/Player" to="CanvasLayer/barreVie" method="_on_Player_health_change"]
+[connection signal="shot" from="Node2D/Player" to="Node2D" method="_on_Player_shot"]
+[connection signal="timeout" from="Node2D/SpawnUpgrade" to="Node2D" method="_on_SpawnUpgrade_timeout"]

@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://new_particlesmaterial.tres" type="Material" id=1]
+[ext_resource path="res://assets/NotoSansJP-Black.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://scripts/LetterFriend.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 300
+font_data = ExtResource( 2 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 126.454, 142.192 )
+
+[node name="letter_friend" type="Node2D"]
+scale = Vector2( 0.2, 0.227 )
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -115.0
+margin_top = -122.0
+margin_right = 115.0
+margin_bottom = 153.0
+rect_scale = Vector2( 0.998953, 0.996192 )
+color = Color( 0.176471, 0.513726, 0.14902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -99.0
+margin_top = -217.5
+margin_right = 99.0
+margin_bottom = 217.5
+custom_fonts/font = SubResource( 1 )
+text = "A"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0.236404, 9.92877 )
+shape = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Particles2D" type="Particles2D" parent="."]
+emitting = false
+amount = 100
+lifetime = 1.4
+one_shot = true
+explosiveness = 1.0
+process_material = ExtResource( 1 )
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

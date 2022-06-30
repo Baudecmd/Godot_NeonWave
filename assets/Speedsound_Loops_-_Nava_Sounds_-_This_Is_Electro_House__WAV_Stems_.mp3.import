@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Speedsound_Loops_-_Nava_Sounds_-_This_Is_Electro_House__WAV_Stems_.mp3-2ef789550afec03da6dcf9ce5c4caa0b.mp3str"
+
+[deps]
+
+source_file="res://assets/Speedsound_Loops_-_Nava_Sounds_-_This_Is_Electro_House__WAV_Stems_.mp3"
+dest_files=[ "res://.import/Speedsound_Loops_-_Nava_Sounds_-_This_Is_Electro_House__WAV_Stems_.mp3-2ef789550afec03da6dcf9ce5c4caa0b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

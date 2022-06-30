@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/kisspng-heart-pixel-art-clip-art-pixel-5abd97e33575d2.271879301522374627219.png" type="Texture" id=1]
+
+[node name="Control" type="NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -965.0
+margin_bottom = -568.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.088562
+margin_right = -0.088562
+color = Color( 0.25098, 0.25098, 0.25098, 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -16.0
+margin_right = 37.0
+margin_bottom = 16.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 32.0
+margin_bottom = 27.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 1.00225
+anchor_top = 0.504642
+anchor_right = 1.00225
+anchor_bottom = 0.504642
+margin_left = -29.1328
+margin_top = -11.1485
+margin_right = -1.13279
+margin_bottom = 12.8515
+text = "3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

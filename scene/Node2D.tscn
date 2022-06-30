@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/Godot_icon.svg" type="Texture" id=1]
+[ext_resource path="res://assets/kisspng-heart-pixel-art-clip-art-pixel-5abd97e33575d2.271879301522374627219.png" type="Texture" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform sampler2D dissolve_texture;
+uniform vec4 burn_color : hint_color = vec4(1);
+uniform float burn_size : hint_range(0, 2);
+uniform float dissolve_amount : hint_range(0, 1);
+uniform float emission_amount;
+
+void fragment() {
+	vec4 out_color = texture(TEXTURE, UV);
+
+	float sample = texture(dissolve_texture, UV).r;
+	float emission_value = 1.0 - smoothstep(dissolve_amount, dissolve_amount + burn_size, sample);
+	vec3 emission = burn_color.rgb * emission_value * emission_amount;
+	
+	COLOR = vec4(max(out_color.rgb, emission), smoothstep(dissolve_amount - burn_size, dissolve_amount, sample) * out_color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/burn_color = Color( 1, 1, 1, 1 )
+shader_param/burn_size = 0.384
+shader_param/dissolve_amount = 0.426
+shader_param/emission_amount = null
+shader_param/dissolve_texture = ExtResource( 2 )
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform sampler2D dissolve_texture;
+uniform vec4 burn_color : hint_color = vec4(1);
+uniform float burn_size : hint_range(0, 2);
+uniform float dissolve_amount : hint_range(0, 1);
+uniform float emission_amount;
+
+void fragment() {
+	vec4 out_color = texture(TEXTURE, UV);
+
+	float sample = texture(dissolve_texture, UV).r;
+	float emission_value = 1.0 - smoothstep(dissolve_amount, dissolve_amount + burn_size, sample);
+	vec3 emission = burn_color.rgb * emission_value * emission_amount;
+	
+	COLOR = vec4(max(out_color.rgb, emission), smoothstep(dissolve_amount - burn_size, dissolve_amount, sample) * out_color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/burn_color = Color( 1, 1, 1, 1 )
+shader_param/burn_size = null
+shader_param/dissolve_amount = null
+shader_param/emission_amount = null
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource( 2 )
+margin_left = -777.275
+margin_top = -360.671
+margin_right = -737.275
+margin_bottom = -320.671
+rect_scale = Vector2( 44.6859, 20.8553 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "
+
+shader_type canvas_item;
+
+uniform sampler2D dissolve_texture;
+uniform vec4 burn_color : hint_color = vec4(1);
+uniform float burn_size : hint_range(0, 2);
+uniform float dissolve_amount : hint_range(0, 1);
+uniform float emission_amount;
+
+void fragment() {
+	vec4 out_color = texture(TEXTURE, UV);
+
+	float sample = texture(dissolve_texture, UV).r;
+	float emission_value = 1.0 - smoothstep(dissolve_amount, dissolve_amount + burn_size, sample);
+	vec3 emission = burn_color.rgb * emission_value * emission_amount;
+	
+	COLOR = vec4(max(out_color.rgb, emission), smoothstep(dissolve_amount - burn_size, dissolve_amount, sample) * out_color.a);
+}"
+}
+
+[node name="Sprite" type="Sprite" parent="ColorRect"]
+material = SubResource( 4 )
+position = Vector2( 17.3942, 17.294 )
+rotation = 3.14159
+scale = Vector2( 0.0112768, -0.0222073 )
+texture = ExtResource( 1 )

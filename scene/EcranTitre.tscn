@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://bptrjy6oh3dgw"]
+
+[ext_resource type="FontData" uid="uid://c0chdlbgn0esi" path="res://assets/NotoSansJP-Black.otf" id="1"]
+[ext_resource type="Font" path="res://assets/EcranTitre.tres" id="2"]
+[ext_resource type="Script" path="res://scripts/EcranTitre.gd" id="3"]
+
+[sub_resource type="Font" id="1"]
+data/0 = ExtResource( "1" )
+
+[sub_resource type="ShaderMaterial" id="2"]
+
+[sub_resource type="ImageTexture" id="3"]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( "3" )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.65098, 0, 0, 1)
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_top = 0.00162135
+anchor_right = 1.0
+anchor_bottom = 1.00162
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+offset_left = 459.0
+offset_top = 150.0
+offset_right = 565.0
+offset_bottom = 449.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+offset_right = 106.0
+offset_bottom = 299.0
+theme_override_constants/separation = 37
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+offset_right = 106.0
+offset_bottom = 80.0
+theme_override_constants/margin_bottom = 50
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer/MarginContainer"]
+offset_right = 106.0
+offset_bottom = 30.0
+theme_override_fonts/font = SubResource( "1" )
+text = "NEON WAVES"
+align = 1
+
+[node name="Button" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+material = SubResource( "2" )
+offset_top = 117.0
+offset_right = 106.0
+offset_bottom = 153.0
+theme_override_fonts/font = ExtResource( "2" )
+text = "Jouer"
+icon = SubResource( "3" )
+
+[node name="Button2" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+material = SubResource( "2" )
+offset_top = 190.0
+offset_right = 106.0
+offset_bottom = 226.0
+theme_override_fonts/font = ExtResource( "2" )
+text = "Options"
+
+[node name="Button3" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+material = SubResource( "2" )
+offset_top = 263.0
+offset_right = 106.0
+offset_bottom = 299.0
+theme_override_fonts/font = ExtResource( "2" )
+text = "Quitter"
+
+[connection signal="button_down" from="CenterContainer/HBoxContainer/VBoxContainer/Button" to="." method="_on_Button_button_down"]
+[connection signal="button_down" from="CenterContainer/HBoxContainer/VBoxContainer/Button2" to="." method="_on_Button2_button_down"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+void fragment(){
+
+	
+	vec2 offset;
+	offset.x=cos(TIME)*0.5;
+	COLOR=texture(TEXTURE,(UV*0.1)+offset);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.5, 1 )
+colors = PoolColorArray( 0, 0.392157, 0.737255, 1, 0.282353, 0.2, 0.686275, 1, 0, 0.392157, 0.737255, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[node name="Node2D" type="Sprite"]
+material = SubResource( 2 )
+position = Vector2( 517.844, 331.218 )
+scale = Vector2( 0.494293, 660.664 )
+texture = SubResource( 4 )

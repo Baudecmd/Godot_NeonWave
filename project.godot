@@ -1,0 +1,36 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+[application]
+
+config/name="NeonWave"
+run/main_scene="res://scene/EcranTitre.tscn"
+
+[autoload]
+
+Global="*res://scripts/global.gd"
+
+[gui]
+
+theme/use_hidpi=true
+
+[layer_names]
+
+2d_physics/layer_1="letter"
+2d_physics/layer_2="player"
+2d_physics/layer_3="letter_ammo"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
